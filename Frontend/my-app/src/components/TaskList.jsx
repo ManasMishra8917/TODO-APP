@@ -30,18 +30,69 @@ const TaskList = () => {
   const deleteTask = (taskId) => {
     socket.emit('deleteTask', taskId);
   };
+  const listStyle = {
+    listStyleType: 'none',
+    padding: 0,
+  };
+
+  const listItemStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '10px',
+    margin: '10px 0',
+    backgroundColor: '#f9f9f9',
+    border: '1px solid #ddd',
+    borderRadius: '5px',
+  };
+
+  const taskTitleStyle = {
+    fontWeight: 'bold',
+    color: '#333',
+  };
+
+  const taskStatusStyle = (status) => ({
+    padding: '5px 10px',
+    borderRadius: '5px',
+    backgroundColor: status === 'completed' ? '#4caf50' : '#f44336',
+    color: '#fff',
+  });
+
+  const buttonStyle = {
+    marginLeft: '10px',
+    padding: '5px 10px',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+  };
+
+  const toggleButtonStyle = {
+    ...buttonStyle,
+    backgroundColor: '#008cba',
+    color: '#fff',
+  };
+
+  const deleteButtonStyle = {
+    ...buttonStyle,
+    backgroundColor: '#e74c3c',
+    color: '#fff',
+  };
 
   return (
-    <ul>
-      {tasks.map((task) => (
-        <li key={task.id}>
-          <span>{task.title}</span>
-          <span>{task.status}</span>
-          <button onClick={() => updateTask(task)}>Toggle Status</button>
-          <button onClick={() => deleteTask(task.id)}>Delete</button>
-        </li>
-      ))}
-    </ul>
+    <ul style={listStyle}>
+    {tasks.map((task) => (
+      <li key={task.id} style={listItemStyle}>
+        <span style={taskTitleStyle}>{task.title}</span>
+        <span style={taskStatusStyle(task.status)}>{task.status}</span>
+        <button style={toggleButtonStyle} onClick={() => updateTask(task)}>
+          Toggle Status
+        </button>
+        <button style={deleteButtonStyle} onClick={() => deleteTask(task.id)}>
+          Delete
+        </button>
+      </li>
+    ))}
+  </ul>
   );
 };
 

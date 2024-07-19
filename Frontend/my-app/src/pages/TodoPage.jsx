@@ -5,7 +5,7 @@ import TaskList from '../components/TaskList';
 const TodoPage = () => {
   return (
     <div>
-      <h1>Todo List</h1>
+      <h2>Todo App</h2>
       <TaskForm />
       <TaskList />
     </div>

@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import './Navbar.css';
 
 const Navbar = () => {
   return (
@@ -16,9 +16,9 @@ const Navbar = () => {
         <li className="navbar-item">
           <Link to="/register" className="navbar-link">Register</Link>
         </li>
-        <li className="navbar-item">
+        {/* <li className="navbar-item">
           <Link to="/tasks" className="navbar-link">Tasks</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

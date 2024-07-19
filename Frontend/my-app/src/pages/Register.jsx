@@ -20,7 +20,7 @@ const RegisterPage = () => {
     e.preventDefault();
     try {
       // Post data to backend API
-      await axios.post('http://localhost:5000/api/auth/register', formData);
+      await axios.post('https://todo-app-eraf.onrender.com/api/auth/register', formData);
       alert('User registered successfully');
       // Clear form fields after successful registration
       setFormData({
